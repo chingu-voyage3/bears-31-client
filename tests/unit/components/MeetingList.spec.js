@@ -6,6 +6,14 @@ import MeetingList from '../../../src/components/Group/MeetingList';
 
 describe('Meeting List', () => {
   let component;
+  const props = {
+    meetings: [
+      {
+        title: 'First meeting',
+        date: '12/16',
+      },
+    ],
+  };
 
   beforeEach(() => {
     component = shallow(<MeetingList />);
@@ -16,10 +24,14 @@ describe('Meeting List', () => {
   });
 
   it('Should have a button for each meeting', () => {
-    expect(component.find('button').exists()).to.equal(true);
+    expect(component.find('.meetinglist__item').exists()).to.equal(true);
   });
 
-  it('Should have a new button to create a meeting', () => {
+  it('Should render title of each meeting when passed in as a prop', () => {
+    // expect(component.find('.meetinglist__item').text()).to.equal(props.meetings[0].title);
+  });
+
+  it('Should have a "new" button to create a meeting', () => {
     expect(component.find('.meetinglist__new').length).to.equal(1);
   });
 });
