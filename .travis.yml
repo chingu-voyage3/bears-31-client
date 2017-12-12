@@ -4,7 +4,15 @@ node_js:
 cache:
   directories:
     - node_modules
+
+before_script:
+  - npm run selenium-setup
+
 script:
   - npm run build
-  - npm test
+  - npm run unit-tests
+  - npm start &
+  - npm run selenium-start &
+  - npm run e2e-tests
+  - pkill node
   
