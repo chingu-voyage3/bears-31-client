@@ -11,14 +11,36 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "unit-tests": "mocha --require ignore-styles ./tests/unit/setup.js --recursive ./tests/unit/components",
+    "tdd": "npm run unit-tests -- --watch",
+    "selenium-setup": "selenium-standalone install",
+    "selenium-start": "selenium-standalone start",
+    "e2e-tests": "wdio wdio.conf.js",
+    "e2e-tests-watch": "wdio wdio.conf.js --watch",
     "eject": "react-scripts eject"
   },
   "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-preset-latest": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "chai": "^4.1.2",
+    "enzyme": "^3.2.0",
+    "enzyme-adapter-react-16": "^1.1.0",
     "eslint": "^4.12.1",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jsx-a11y": "^6.0.2",
-    "eslint-plugin-react": "^7.5.1"
+    "eslint-plugin-react": "^7.5.1",
+    "ignore-styles": "^5.0.1",
+    "jsdom": "^11.5.1",
+    "mocha": "^4.0.1",
+    "react-test-renderer": "^16.2.0",
+    "selenium-standalone": "^6.12.0",
+    "sinon": "^4.1.3",
+    "wdio-dot-reporter": "0.0.9",
+    "wdio-mocha-framework": "^0.5.11",
+    "wdio-selenium-standalone-service": "0.0.9",
+    "webdriverio": "^4.9.11"
   }
 }
