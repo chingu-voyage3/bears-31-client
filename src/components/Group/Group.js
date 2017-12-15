@@ -1,19 +1,37 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Layout } from 'antd';
 import MeetingList from './MeetingList';
 import MeetingDetail from './MeetingDetail';
+import CreateMeeting from './CreateMeeting';
 
 const { Content } = Layout;
 
-const Group = () => {
-  return (
-    <Content style={{ padding: '0 20%' }}>
-      <Layout>
-        <MeetingList />
-        <MeetingDetail />
-      </Layout>
-    </Content>
-  );
-};
+class Group extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      showCreateMeeting: false,
+    };
+  }
+  handleNewClick = () => {
+    this.setState(prevState => ({
+      showCreateMeeting: !prevState.showCreateMeeting,
+    }));
+  }
+  render() {
+    return (
+      <Content style={{ padding: '0 20%' }}>
+        <Layout style={{ marginBottom: '50px' }}>
+          <MeetingList
+            handleNewClick={this.handleNewClick}
+          />
+          <MeetingDetail />
+        </Layout>
+        {this.state.showCreateMeeting && <CreateMeeting />}
+      </Content>
+    );
+  }
+}
 
 export default Group;

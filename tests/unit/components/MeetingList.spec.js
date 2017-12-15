@@ -1,11 +1,12 @@
 /* global describe, it, beforeEach */
 import React from 'react';
 import { expect } from 'chai';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import MeetingList from '../../../src/components/Group/MeetingList';
 
 describe('Meeting List', () => {
   let component;
+
   const props = {
     meetings: [
       {
@@ -31,7 +32,17 @@ describe('Meeting List', () => {
     // expect(component.find('.meetinglist__item').text()).to.equal(props.meetings[0].title);
   });
 
-  it('Should have a "new" button to create a meeting', () => {
-    expect(component.find('.meetinglist__new').length).to.equal(1);
+  describe('New button', () => {
+    it('Should have a "new" button to create a meeting', () => {
+      expect(component.find('.meetinglist__new').length).to.equal(1);
+    });
+
+    it('Should call the handleNewClick function when clicked', () => {
+      // component = mount(<MeetingList handleNewClick={handleNewMock} />);
+
+      // expect(handleNewMock.mock.calls.length).to.equal(0);
+      // component.find('.meetinglist__new').simulate('click');
+      // expect(handleNewMock.mock.calls.length).to.equal(1);
+    });
   });
 });

@@ -3,18 +3,18 @@ import { Layout, Menu } from 'antd';
 
 const { Sider } = Layout;
 
-const MeetingList = () => {
+const MeetingList = ({ handleNewClick }) => {
   return (
     <Sider>
-      <Menu>
+      <div>
         <div>
           <button className="meetinglist__item">First meeting</button>
           <button className="meetinglist__item">GraphQL introduction</button>
         </div>
         <div>
-          <button className="meetinglist__new">New</button>
+          <button className="meetinglist__new" onClick={handleNewClick}>New</button>
         </div>
-      </Menu> 
+      </div> 
     </Sider>
 
   );
