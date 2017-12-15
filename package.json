@@ -11,7 +11,7 @@
   "scripts": {
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
-    "unit-tests": "mocha --require ignore-styles ./tests/unit/setup.js --recursive ./tests/unit/components",
+    "unit-tests": "mocha --require babel-register --require ignore-styles ./tests/unit/setup.js --recursive ./tests/unit/components",
     "tdd": "npm run unit-tests -- --watch",
     "selenium-setup": "selenium-standalone install",
     "selenium-start": "selenium-standalone start",

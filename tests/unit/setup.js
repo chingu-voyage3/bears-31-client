@@ -1,12 +1,9 @@
-require('babel-register')();
-const jsdom = require('jsdom');
-
-const Enzyme = require('enzyme');
-const Adapter = require('enzyme-adapter-react-16');
+import { JSDOM } from 'jsdom';
+import Enzyme from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
 
 Enzyme.configure({ adapter: new Adapter() });
 
-const { JSDOM } = jsdom;
 const exposedProperties = ['window', 'navigator', 'document'];
 
 const { document } = (new JSDOM('')).window;
