@@ -1,12 +1,12 @@
 import React from 'react';
-import MeetingList from '../src/components/Group/MeetingList';
+import Group from '../src/components/Group/Group';
 import './App.css';
 
 const App = () =>
   (
     <div className="App">
       <h1>Hemsut</h1>
-      <MeetingList />
+      <Group />
     </div>
   );
 
