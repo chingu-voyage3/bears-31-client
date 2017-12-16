@@ -13,7 +13,7 @@
   "scripts": {
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
-    "unit-tests": "mocha --require ignore-styles ./tests/unit/setup.js --recursive ./tests/unit/components",
+    "unit-tests": "mocha --require babel-register --require ignore-styles ./tests/unit/setup.js --recursive ./tests/unit/components",
     "tdd": "npm run unit-tests -- --watch",
     "selenium-setup": "selenium-standalone install",
     "selenium-start": "selenium-standalone start",
@@ -24,6 +24,7 @@
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-plugin-import": "^1.6.3",
+    "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-latest": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "babel-register": "^6.26.0",
