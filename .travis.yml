@@ -4,7 +4,13 @@ node_js:
 cache:
   directories:
     - node_modules
+addons:
+  chrome: stable
+  
+before_script:
+  - npm run selenium-setup
+
 script:
   - npm run build
-  - npm test
+  - npm run unit-tests
   
