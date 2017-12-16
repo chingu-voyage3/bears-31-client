@@ -4,7 +4,6 @@ import { createMeeting } from '../../../src/actions/meetings';
 
 describe('Actions', () => {
   const meeting = {
-    id: 1,
     group_id: 1,
     title: 'First Meeting',
     location: 'Google handout',

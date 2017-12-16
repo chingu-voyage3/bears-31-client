@@ -6,7 +6,7 @@ import MeetingList from '../../../src/components/Group/MeetingList';
 
 describe('Meeting List', () => {
   let component;
-
+  // const handleNewMock = jest.fn();
   const props = {
     meetings: [
       {

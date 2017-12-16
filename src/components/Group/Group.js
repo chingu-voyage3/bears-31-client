@@ -13,8 +13,9 @@ class Group extends Component {
     this.state = {
       showCreateMeeting: false,
     };
+    this.handleNewClick = this.handleNewClick.bind(this);
   }
-  handleNewClick = () => {
+  handleNewClick() {
     this.setState(prevState => ({
       showCreateMeeting: !prevState.showCreateMeeting,
     }));

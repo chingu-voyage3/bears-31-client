@@ -1,5 +1,4 @@
 export const createMeeting = ({
-  id,
   group_id,
   title,
   location,
@@ -8,7 +7,6 @@ export const createMeeting = ({
 }) => ({
   type: 'CREATE_MEETING',
   meeting: {
-    id,
     group_id,
     title,
     location,
