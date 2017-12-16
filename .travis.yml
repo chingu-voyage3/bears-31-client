@@ -13,9 +13,4 @@ before_script:
 script:
   - npm run build
   - npm run unit-tests
-  - pkill node
-  - npm start &
-  - npm run selenium-start &
-  - npm run e2e-tests
-  - pkill node
   
