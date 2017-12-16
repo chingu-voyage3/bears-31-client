@@ -2,11 +2,11 @@
 import React from 'react';
 import { expect } from 'chai';
 import { shallow, mount } from 'enzyme';
+import { spy } from 'sinon';
 import MeetingList from '../../../src/components/Group/MeetingList';
 
 describe('Meeting List', () => {
   let component;
-  // const handleNewMock = jest.fn();
   const props = {
     meetings: [
       {
@@ -33,16 +33,18 @@ describe('Meeting List', () => {
   });
 
   describe('New button', () => {
+    const newMeetingSpy = spy();
+
     it('Should have a "new" button to create a meeting', () => {
       expect(component.find('.meetinglist__new').length).to.equal(1);
     });
 
     it('Should call the handleNewClick function when clicked', () => {
-      // component = mount(<MeetingList handleNewClick={handleNewMock} />);
+      component = mount(<MeetingList handleNewClick={newMeetingSpy} />);
 
-      // expect(handleNewMock.mock.calls.length).to.equal(0);
-      // component.find('.meetinglist__new').simulate('click');
-      // expect(handleNewMock.mock.calls.length).to.equal(1);
+      expect(newMeetingSpy.notCalled).to.equal(true);
+      component.find('.meetinglist__new').simulate('click');
+      expect(newMeetingSpy.calledOnce).to.equal(true);
     });
   });
 });
