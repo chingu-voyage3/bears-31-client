@@ -8,14 +8,6 @@ import CreateMeeting from './CreateMeeting';
 
 const { Content } = Layout;
 
-const meetingOne = {
-  group_id: 1,
-  title: 'First Meeting',
-  location: 'Google Hangout',
-  detail: 'We will discuss about our project!',
-  due: 20171231,
-};
-
 type Props = {
 
 };
@@ -42,7 +34,7 @@ class Group extends React.Component<Props, State> {
             handleNewClick={this.handleNewClick}
             meetings={meetings}
           />
-            <MeetingDetail {...meetingOne} />
+            <MeetingDetail />
         </Layout>
         {this.state.showCreateMeeting && <CreateMeeting />}
       </Content>
