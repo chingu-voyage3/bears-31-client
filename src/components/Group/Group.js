@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+// @flow
+import * as React from 'react';
 import { Layout } from 'antd';
 import MeetingList from './MeetingList';
 import MeetingDetail from './MeetingDetail';
@@ -14,16 +15,19 @@ const meetingOne = {
   due: 20171231,
 };
 
-class Group extends Component {
+type State = {
+  showCreateMeeting: boolean,
+};
+
+class Group extends React.Component<State> {
   constructor() {
     super();
 
     this.state = {
       showCreateMeeting: false,
     };
-    this.handleNewClick = this.handleNewClick.bind(this);
   }
-  handleNewClick() {
+  handleNewClick = () => {
     this.setState(prevState => ({
       showCreateMeeting: !prevState.showCreateMeeting,
     }));
