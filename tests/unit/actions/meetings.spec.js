@@ -1,6 +1,6 @@
 /* global it, describe */
 import { expect } from 'chai';
-import { createMeeting } from '../../../src/actions/meetings';
+import { createMeeting } from '../../../src/actions/actionCreators';
 
 describe('Actions', () => {
   const meeting = {

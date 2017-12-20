@@ -1,5 +1,6 @@
 // @flow
 import * as React from 'react';
+import { connect } from 'react-redux';
 import { Layout } from 'antd';
 import MeetingList from './MeetingList';
 import MeetingDetail from './MeetingDetail';
@@ -11,35 +12,36 @@ const meetingOne = {
   group_id: 1,
   title: 'First Meeting',
   location: 'Google Hangout',
-  details: 'We will discuss about our project!',
+  detail: 'We will discuss about our project!',
   due: 20171231,
+};
+
+type Props = {
+
 };
 
 type State = {
   showCreateMeeting: boolean,
 };
 
-class Group extends React.Component<State> {
-  constructor() {
-    super();
-
-    this.state = {
-      showCreateMeeting: false,
-    };
-  }
+class Group extends React.Component<Props, State> {
+  state = {
+    showCreateMeeting: false,
+  };
   handleNewClick = () => {
     this.setState(prevState => ({
       showCreateMeeting: !prevState.showCreateMeeting,
     }));
   }
   render() {
+    console.log(this.props);
     return (
       <Content style={{ padding: '0 20%' }}>
         <Layout style={{ marginBottom: '50px' }}>
           <MeetingList
             handleNewClick={this.handleNewClick}
           />
-          <MeetingDetail meetings={meetingOne} />
+            <MeetingDetail {...meetingOne} />
         </Layout>
         {this.state.showCreateMeeting && <CreateMeeting />}
       </Content>
@@ -47,4 +49,8 @@ class Group extends React.Component<State> {
   }
 }
 
-export default Group;
+const mapStateToProps = state => ({ meetings: state.meetings });
+
+
+export default connect(mapStateToProps)(Group);
+

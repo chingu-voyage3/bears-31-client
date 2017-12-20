@@ -1,13 +1,25 @@
+// @flow
 import * as React from 'react';
-// import { Layout } from 'antd';
 
-// const { Content} = Layout;
+type MeetingsProps = {
+    group_id: number,
+    title: string,
+    location: string,
+    detail: string,
+    due: number,
+};
 
-
-const MeetingList = (props) => {
+const MeetingList = ({ title, due, location, detail }: MeetingsProps) => {
   return (
     <div>
-      <h2 className="meeting-detail__title">{props.meetings.title}</h2>
+      <ul>
+        <li className="meeting-detail__title">Title: {title}</li>
+        <li className="meeting-detail__date">Date: {due}</li>
+        <li className="meeting-detail__location">Location: {location}</li>
+        <li className="meeting-detail__detail">Detail: {detail}</li>
+      </ul>
+      
+
     </div>
   );
 };

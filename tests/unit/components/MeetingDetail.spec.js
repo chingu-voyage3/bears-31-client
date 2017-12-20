@@ -11,7 +11,7 @@ describe('Meeting Detail', () => {
     group_id: 1,
     title: 'First Meeting',
     location: 'Google Hangout',
-    details: 'We will discuss about our project!',
+    detail: 'We will discuss about our project!',
     due: 20171231,
   };
 
@@ -21,8 +21,19 @@ describe('Meeting Detail', () => {
     expect(component.exists()).to.equal(true);
   });
 
-  it('Should render the meeting detail passed in as a prop', () => {
-    // expect(component.find('.meeting-detail__title').text()).to.equal(props);
-    // console.log(props);
+  it('Should render the meeting title passed in as a prop', () => {
+    expect(component.find('.meeting-detail__title').text()).to.equal(`Title: ${props.title}`);
+  });
+
+  it('Should render the data passed in as a prop', () => {
+    expect(component.find('.meeting-detail__date').text()).to.equal(`Date: ${props.due}`);
+  });
+
+  it('Should render the location passed in as a prop', () => {
+    expect(component.find('.meeting-detail__location').text()).to.equal(`Location: ${props.location}`);
+  });
+
+  it('Should render the location passed in as a prop', () => {
+    expect(component.find('.meeting-detail__detail').text()).to.equal(`Detail: ${props.detail}`);
   });
 });

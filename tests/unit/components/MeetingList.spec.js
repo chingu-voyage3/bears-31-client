@@ -43,8 +43,14 @@ describe('Meeting List', () => {
       component = mount(<MeetingList handleNewClick={newMeetingSpy} />);
 
       expect(newMeetingSpy.notCalled).to.equal(true);
-      component.find('.meetinglist__new').simulate('click');
+      component.find('.meetinglist__new .ant-btn-primary').simulate('click');
       expect(newMeetingSpy.calledOnce).to.equal(true);
     });
   });
+  
+  // describe('Meeting buttons', () => {
+  //   it('Should call the handleShowClick when clicked', () => {
+
+  //   });
+  // });
 });
