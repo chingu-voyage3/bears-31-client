@@ -34,12 +34,13 @@ class Group extends React.Component<Props, State> {
     }));
   }
   render() {
-    console.log(this.props);
+    const { meetings } = this.props;
     return (
       <Content style={{ padding: '0 20%' }}>
         <Layout style={{ marginBottom: '50px' }}>
           <MeetingList
             handleNewClick={this.handleNewClick}
+            meetings={meetings}
           />
             <MeetingDetail {...meetingOne} />
         </Layout>

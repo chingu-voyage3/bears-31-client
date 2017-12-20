@@ -6,20 +6,17 @@ const { Sider } = Layout;
 
 type Props = {
   handleNewClick: Function,
+  meetings: Array<Object>,
 }
 
-// const ButtonStyle = {
-//   width: '180px',
-//   marginBottom: '10px',
-// };
-
-const MeetingList = ({ handleNewClick }: Props) => {
+const MeetingList = ({ handleNewClick, meetings }: Props) => {
   return (
     <Sider>
       <div>
         <div>
-          <Button className="meetinglist__item">First meeting</Button>
-          <Button className="meetinglist__item">GraphQL introduction</Button>
+          {meetings.map(meeting => (
+            <Button className="meetinglist__item" key={meeting.title}>{meeting.title}</Button>
+          ))}
         </div>
         <div>
           <Button type="primary" className="meetinglist__new" onClick={handleNewClick}>New</Button>
