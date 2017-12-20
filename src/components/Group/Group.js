@@ -6,6 +6,14 @@ import CreateMeeting from './CreateMeeting';
 
 const { Content } = Layout;
 
+const meetingOne = {
+  group_id: 1,
+  title: 'First Meeting',
+  location: 'Google Hangout',
+  details: 'We will discuss about our project!',
+  due: 20171231,
+};
+
 class Group extends Component {
   constructor() {
     super();
@@ -27,7 +35,7 @@ class Group extends Component {
           <MeetingList
             handleNewClick={this.handleNewClick}
           />
-          <MeetingDetail />
+          <MeetingDetail meetings={meetingOne} />
         </Layout>
         {this.state.showCreateMeeting && <CreateMeeting />}
       </Content>

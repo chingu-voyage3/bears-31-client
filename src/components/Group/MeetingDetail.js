@@ -3,12 +3,12 @@ import React from 'react';
 
 // const { Content} = Layout;
 
-const MeetingList = () => {
+
+const MeetingList = (props) => {
   return (
     <div>
-      Meeting Detail
+      <h2 className="meeting-detail__title"></h2>
     </div>
-
   );
 };
 
