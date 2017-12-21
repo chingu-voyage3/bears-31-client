@@ -1,3 +1,5 @@
+/* global window */
+
 import { combineReducers, createStore, compose } from 'redux';
 import meetings from './reducers/meetings';
 
