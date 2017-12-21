@@ -3,6 +3,8 @@ import React from 'react';
 import { expect } from 'chai';
 import { shallow, mount } from 'enzyme';
 import { spy } from 'sinon';
+import { BrowserRouter as Router } from 'react-router-dom';
+
 import MeetingList from '../../../src/components/Group/MeetingList';
 
 describe('Meeting List', () => {
@@ -31,7 +33,7 @@ describe('Meeting List', () => {
   });
 
   it('Should render title of each meeting when passed in as a prop', () => {
-    // expect(component.find('.meetinglist__item').text()).to.equal(props.meetings[0].title);
+    expect(component.find('.meetinglist__item').html().includes(props.meetings[0].title)).to.equal(true);
   });
 
   describe('New button', () => {
@@ -42,10 +44,10 @@ describe('Meeting List', () => {
     });
 
     it('Should call the handleNewClick function when clicked', () => {
-      component = mount(<MeetingList {...props} />);
+      component = mount(<Router><MeetingList {...props} /></Router>);
 
       expect(newMeetingSpy.notCalled).to.equal(true);
-      component.find('.meetinglist__new .ant-btn-primary').simulate('click');
+      component.find('.meetinglist__new').simulate('click');
       expect(newMeetingSpy.calledOnce).to.equal(true);
     });
   });
