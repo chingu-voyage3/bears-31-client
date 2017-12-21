@@ -49,10 +49,4 @@ describe('Meeting List', () => {
       expect(newMeetingSpy.calledOnce).to.equal(true);
     });
   });
-  
-  describe('Meeting buttons', () => {
-    it('Should call the handleShowClick when clicked', () => {
-
-    });
-  });
 });

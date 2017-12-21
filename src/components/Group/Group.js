@@ -27,7 +27,6 @@ class Group extends React.Component<Props, State> {
   }
   render() {
     const { meetings } = this.props;
-    console.log(this.props);
     return (
       <Content style={{ padding: '0 20%' }}>
         <Layout style={{ marginBottom: '50px' }}>
