@@ -8,4 +8,9 @@ describe('App', () => {
 
     expect(actualTitle).to.eql('Hemsut');
   });
+
+  it('Should allow me to create a new meeting', () => {
+    browser.click('.meetinglist__new');
+    /* */
+  });
 });

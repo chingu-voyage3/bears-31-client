@@ -1,11 +1,13 @@
 import React from 'react';
+import Header from '../src/components/Header/Header';
+import Group from '../src/components/Group/Group';
 import './App.css';
 
-const App = () =>
-  (
-    <div className="App">
-      <h1>Hemsut</h1>
-    </div>
-  );
+const App = props => (
+  <div className="App">
+    <Header />
+    <Group {...props} />
+  </div>
+);
 
 export default App;
