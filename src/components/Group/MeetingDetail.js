@@ -9,17 +9,10 @@ type MeetingsProps = {
     due: number,
 };
 
-const MeetingList = ({ title, due, location, detail }: MeetingsProps) => {
+const MeetingList = () => {
   return (
     <div>
-      <ul>
-        <li className="meeting-detail__title">Title: {title}</li>
-        <li className="meeting-detail__date">Date: {due}</li>
-        <li className="meeting-detail__location">Location: {location}</li>
-        <li className="meeting-detail__detail">Detail: {detail}</li>
-      </ul>
-      
-
+      Meeting Detail
     </div>
   );
 };

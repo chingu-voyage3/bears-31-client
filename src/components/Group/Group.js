@@ -8,35 +8,17 @@ import CreateMeeting from './CreateMeeting';
 
 const { Content } = Layout;
 
-type Props = {
-
-};
-
-type State = {
-  showCreateMeeting: boolean,
-};
-
 class Group extends React.Component<Props, State> {
-  state = {
-    showCreateMeeting: false,
-  };
-  handleNewClick = () => {
-    this.setState(prevState => ({
-      showCreateMeeting: !prevState.showCreateMeeting,
-    }));
-  }
   render() {
     const { meetings } = this.props;
     return (
       <Content style={{ padding: '0 20%' }}>
         <Layout style={{ marginBottom: '50px' }}>
           <MeetingList
-            handleNewClick={this.handleNewClick}
             meetings={meetings}
           />
             <MeetingDetail />
         </Layout>
-        {this.state.showCreateMeeting && <CreateMeeting />}
       </Content>
     );
   }

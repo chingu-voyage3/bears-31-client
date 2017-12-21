@@ -6,11 +6,10 @@ import { Layout, Button } from 'antd';
 const { Sider } = Layout;
 
 type Props = {
-  handleNewClick: Function,
   meetings: Array<Object>,
 }
 
-const MeetingList = ({ handleNewClick, meetings }: Props) => {
+const MeetingList = ({ meetings }: Props) => {
   return (
     <Sider>
       <div>
@@ -22,7 +21,7 @@ const MeetingList = ({ handleNewClick, meetings }: Props) => {
           ))}
         </div>
         <div>
-          <Button type="primary" className="meetinglist__new" onClick={handleNewClick}>New</Button>
+          <Button type="primary" className="meetinglist__new">New</Button>
         </div>
       </div>
     </Sider>
