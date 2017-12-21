@@ -1,5 +1,6 @@
 // @flow
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 import { Layout, Button } from 'antd';
 
 const { Sider } = Layout;
@@ -15,7 +16,9 @@ const MeetingList = ({ handleNewClick, meetings }: Props) => {
       <div>
         <div>
           {meetings.map(meeting => (
-            <Button className="meetinglist__item" key={meeting.title}>{meeting.title}</Button>
+            <Link to={`/${meeting.group_id}/meetings/${meeting.id}`} key={meeting.title}>
+              <Button className="meetinglist__item">{meeting.title}</Button>
+            </Link>
           ))}
         </div>
         <div>

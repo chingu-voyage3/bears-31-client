@@ -1,5 +1,6 @@
 const meetingsData = [
   {
+    id: 1,
     group_id: 1,
     title: 'First Meeting',
     location: 'Google Hangout',
@@ -7,6 +8,7 @@ const meetingsData = [
     due: 20171231,
   },
   {
+    id: 2,
     group_id: 1,
     title: 'GraphQL introduction',
     location: 'Google handout',

@@ -1,13 +1,17 @@
 import React from 'react'
 import { Provider } from 'react-redux'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { Switch, BrowserRouter as Router, Route } from 'react-router-dom'
 import store from './store';
 import App from './App';
+import Group from '../src/components/Group/Group';
 
 const Root = () => (
   <Provider store={store}>
     <Router>
-      <Route path="/" component={App} />
+      <Switch>
+        <Route path="/" component={App} />
+        <Route path="/:groupId/meetings/:meetingId" component={App} />
+      </Switch>
     </Router>
   </Provider>
 );

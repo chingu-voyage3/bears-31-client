@@ -7,7 +7,9 @@ import MeetingList from '../../../src/components/Group/MeetingList';
 
 describe('Meeting List', () => {
   let component;
+  const handleNewClickSpy = spy();
   const props = {
+    handleNewClick: handleNewClickSpy,
     meetings: [
       {
         title: 'First meeting',
@@ -17,7 +19,7 @@ describe('Meeting List', () => {
   };
 
   beforeEach(() => {
-    component = shallow(<MeetingList />);
+    component = shallow(<MeetingList {...props} />);
   });
 
   it('Should render successfully', () => {
@@ -40,7 +42,7 @@ describe('Meeting List', () => {
     });
 
     it('Should call the handleNewClick function when clicked', () => {
-      component = mount(<MeetingList handleNewClick={newMeetingSpy} />);
+      component = mount(<MeetingList {...props} />);
 
       expect(newMeetingSpy.notCalled).to.equal(true);
       component.find('.meetinglist__new .ant-btn-primary').simulate('click');
@@ -48,9 +50,9 @@ describe('Meeting List', () => {
     });
   });
   
-  // describe('Meeting buttons', () => {
-  //   it('Should call the handleShowClick when clicked', () => {
+  describe('Meeting buttons', () => {
+    it('Should call the handleShowClick when clicked', () => {
 
-  //   });
-  // });
+    });
+  });
 });
