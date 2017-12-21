@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { Layout } from 'antd';
 import MeetingList from './MeetingList';
 import MeetingDetail from './MeetingDetail';
-import CreateMeeting from './CreateMeeting';
 
 const { Content } = Layout;
 
