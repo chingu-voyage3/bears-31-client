@@ -8,7 +8,7 @@ const Root = () => (
   <Provider store={store}>
     <Router>
       <Switch>
-        <Route path="/" component={App} />
+        <Route path="/" component={App} exact />
         <Route path="/:groupId/meetings/:meetingId" component={App} />
       </Switch>
     </Router>

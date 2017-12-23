@@ -3,7 +3,7 @@ import Header from '../src/components/Header/Header';
 import Group from '../src/components/Group/Group';
 import './App.css';
 
-const App = props => (
+export const App = props => (
   <div className="App">
     <Header />
     <Group {...props} />

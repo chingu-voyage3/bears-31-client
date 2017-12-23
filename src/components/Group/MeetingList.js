@@ -7,10 +7,11 @@ const { Sider } = Layout;
 
 type Props = {
   handleNewClick: Function,
+  fetchMeeting: Function,
   meetings: Array<Object>,
 }
 
-const MeetingList = ({ handleNewClick, meetings }: Props) => (
+const MeetingList = ({ handleNewClick, fetchMeeting, meetings }: Props) => (
   <Sider>
     <div>
       <div>

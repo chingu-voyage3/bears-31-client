@@ -1,4 +1,5 @@
 export const createMeeting = ({
+  id,
   group_id,
   title,
   location,
@@ -7,6 +8,7 @@ export const createMeeting = ({
 }) => ({
   type: 'CREATE_MEETING',
   meeting: {
+    id,
     group_id,
     title,
     location,
@@ -15,4 +17,9 @@ export const createMeeting = ({
   },
 });
 
-export const removeMeeting = () => ({});
+export const fetchMeeting = (id, group_id) => ({
+  type: 'FETCH_MEETING',
+  id,
+  group_id,
+});
+
