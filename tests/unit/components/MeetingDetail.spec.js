@@ -28,18 +28,18 @@ describe('Meeting Detail', () => {
   });
 
   it('Should render the meeting title passed in as a prop', () => {
-    expect(component.find('.meeting-detail__title').text()).to.equal(`Title: ${props.meetings[0].title}`);
+    expect(component.find('.meeting-detail__title').text()).to.contain(props.meetings[0].title);
   });
 
   it('Should render the data passed in as a prop', () => {
-    expect(component.find('.meeting-detail__date').text()).to.equal(`Date: ${props.meetings[0].due}`);
+    expect(component.find('.meeting-detail__date').text()).to.contain(props.meetings[0].due);
   });
 
   it('Should render the location passed in as a prop', () => {
-    expect(component.find('.meeting-detail__location').text()).to.equal(`Location: ${props.meetings[0].location}`);
+    expect(component.find('.meeting-detail__location').text()).to.contain(props.meetings[0].location);
   });
 
   it('Should render the location passed in as a prop', () => {
-    expect(component.find('.meeting-detail__detail').text()).to.equal(`Detail: ${props.meetings[0].detail}`);
+    expect(component.find('.meeting-detail__detail').text()).to.contain(props.meetings[0].detail);
   });
 });
