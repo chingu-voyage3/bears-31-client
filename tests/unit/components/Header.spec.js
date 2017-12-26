@@ -15,7 +15,6 @@ describe('Header', () => {
   });
 
   it('Should render "Hemsut" somewhere', () => {
-    expect(component.html().includes('Hemsut')).to.equal(true);
-
+    expect(component.html()).to.contain('Hemsut');
   });
 });
