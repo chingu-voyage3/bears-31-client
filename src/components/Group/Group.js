@@ -6,15 +6,12 @@ import { Layout } from 'antd';
 import MeetingList from './MeetingList';
 import MeetingDetail from './MeetingDetail';
 import CreateMeeting from './CreateMeeting';
-import {
-  fetchMeeting,
-} from '../../actions/actionCreators';
 
 const { Content } = Layout;
 
 type Props = {
   meetings: Array<Object>,
-  fetchMeeting: Function,
+  match: Object,
 };
 
 type State = {
@@ -31,16 +28,17 @@ class Group extends React.Component<Props, State> {
     }));
   }
   render() {
-    const { meetings, fetchMeeting } = this.props;
+    const { meetings, match } = this.props;
     return (
       <Content style={{ padding: '0 20%' }}>
         <Layout style={{ marginBottom: '50px' }}>
           <MeetingList
             handleNewClick={this.handleNewClick}
-            fetchMeeting={fetchMeeting}
             meetings={meetings}
           />
-            <MeetingDetail />
+          {
+            match.params.meetingId && <MeetingDetail {...this.props} />
+          }
         </Layout>
         {this.state.showCreateMeeting && <CreateMeeting />}
       </Content>
@@ -48,13 +46,8 @@ class Group extends React.Component<Props, State> {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  fetchMeeting: (id, group_id) => {
-    dispatch(fetchMeeting(id, group_id));
-  },
-});
 
 const mapStateToProps = state => ({ meetings: state.meetings });
 
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Group));
+export default withRouter(connect(mapStateToProps)(Group));

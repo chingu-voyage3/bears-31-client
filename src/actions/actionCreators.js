@@ -16,10 +16,3 @@ export const createMeeting = ({
     due,
   },
 });
-
-export const fetchMeeting = (id, group_id) => ({
-  type: 'FETCH_MEETING',
-  id,
-  group_id,
-});
-

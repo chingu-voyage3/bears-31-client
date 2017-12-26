@@ -2,7 +2,6 @@
 import { expect } from 'chai';
 import {
   createMeeting,
-  fetchMeeting,
 } from '../../../src/actions/actionCreators';
 
 describe('Actions', () => {
@@ -22,15 +21,5 @@ describe('Actions', () => {
     };
 
     expect(createMeeting(meeting)).to.eql(expectedAction);
-  });
-
-  it('Should create an action to pull the meeting data by meeting and group id', () => {
-    const expectedAction = {
-      type: 'FETCH_MEETING',
-      id: meeting.id,
-      group_id: meeting.group_id,
-    };
-
-    expect(fetchMeeting(meeting.id, meeting.group_id)).to.eql(expectedAction);
   });
 });
