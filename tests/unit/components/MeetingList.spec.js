@@ -1,8 +1,7 @@
 /* global describe, it, beforeEach */
 import React from 'react';
-import { MemoryRouter as Router } from 'react-router-dom';
 import { expect } from 'chai';
-import { shallow, mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import { spy } from 'sinon';
 
 import MeetingList from '../../../src/components/Group/MeetingList';
