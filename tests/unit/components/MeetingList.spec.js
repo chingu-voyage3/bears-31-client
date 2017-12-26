@@ -40,14 +40,5 @@ describe('Meeting List', () => {
     it('Should have a "new" button to create a meeting', () => {
       expect(component.find('.meetinglist__new').length).to.equal(1);
     });
-
-    // it('Should call the handleNewClick function when clicked', () => {
-    //   component = mount(<Router><MeetingList {...props} /></Router>);
-
-    //   expect(handleNewClickSpy.notCalled, 'initial').to.equal(true);
-
-    //   component.find('.meetinglist__new').first().simulate('click');
-    //   expect(handleNewClickSpy.calledOnce, 'after click').to.equal(true);
-    // });
   });
 });
