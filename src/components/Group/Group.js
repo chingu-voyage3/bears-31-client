@@ -36,9 +36,7 @@ class Group extends React.Component<Props, State> {
             handleNewClick={this.handleNewClick}
             meetings={meetings}
           />
-          {
-            match.params.meetingId && <MeetingDetail {...this.props} />
-          }
+            <MeetingDetail {...this.props} />
         </Layout>
         {this.state.showCreateMeeting && <CreateMeeting />}
       </Content>
