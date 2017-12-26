@@ -14,8 +14,9 @@ type MeetingsProps = {
 
 const MeetingList = ({ match, meetings }: MeetingsProps) => {
   // Assign the first meeting id when there is no params (initial render)
+  const firstMeetingId = (meetings.length > 0 ? meetings[0].id : 0);
   const meetingId =
-    (match.params.meetingId ? parseInt(match.params.meetingId, 10) : meetings[0].id);
+    (match.params.meetingId ? parseInt(match.params.meetingId, 10) : firstMeetingId);
   const currentMeeting = meetings.find(meeting => meeting.id === meetingId);
 
   return (
