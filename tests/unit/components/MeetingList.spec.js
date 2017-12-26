@@ -1,9 +1,9 @@
 /* global describe, it, beforeEach */
 import React from 'react';
+import { MemoryRouter as Router } from 'react-router-dom';
 import { expect } from 'chai';
 import { shallow, mount } from 'enzyme';
 import { spy } from 'sinon';
-import { BrowserRouter as Router } from 'react-router-dom';
 
 import MeetingList from '../../../src/components/Group/MeetingList';
 
@@ -37,8 +37,6 @@ describe('Meeting List', () => {
   });
 
   describe('New button', () => {
-    const newMeetingSpy = spy();
-
     it('Should have a "new" button to create a meeting', () => {
       expect(component.find('.meetinglist__new').length).to.equal(1);
     });
@@ -46,9 +44,13 @@ describe('Meeting List', () => {
     it('Should call the handleNewClick function when clicked', () => {
       component = mount(<Router><MeetingList {...props} /></Router>);
 
-      expect(newMeetingSpy.notCalled).to.equal(true);
-      component.find('.meetinglist__new').simulate('click');
-      expect(newMeetingSpy.calledOnce).to.equal(true);
+      expect(handleNewClickSpy.notCalled).to.equal(true);
+
+      // when component is mounted 'find' finds two Buttons with class '.meetinglist__new'
+      // workaround: use the first one.
+      // TODO: learn about clean way to do this
+      component.find('.meetinglist__new').first().simulate('click');
+      expect(handleNewClickSpy.calledOnce).to.equal(true);
     });
   });
 });
