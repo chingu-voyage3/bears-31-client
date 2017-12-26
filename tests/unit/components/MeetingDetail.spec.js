@@ -1,12 +1,10 @@
-/* global describe, it, beforeEach */
+/* global describe, it */
 import React from 'react';
 import { expect } from 'chai';
-import { shallow, mount } from 'enzyme';
-import { spy } from 'sinon';
+import { shallow } from 'enzyme';
 import MeetingDetail from '../../../src/components/Group/MeetingDetail';
 
 describe('Meeting Detail', () => {
-  
   const props = {
     match: {
       params: {

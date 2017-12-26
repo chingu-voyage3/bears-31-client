@@ -1,30 +1,65 @@
 // @flow
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import { Layout, Button } from 'antd';
+import { Layout, Modal, Button } from 'antd';
 
 const { Sider } = Layout;
 
+type State = {
+  showCreateMeeting: boolean,
+};
+
 type Props = {
-  handleNewClick: Function,
-  meetings: Array<Object>,
+  meetings: [{
+    id: number,
+    group_id: number,
+    title: string,
+    due: number,
+    location: string,
+    detail: string,
+  }],
 }
 
-const MeetingList = ({ handleNewClick, meetings }: Props) => (
-  <Sider>
-    <div>
-      <div>
-        {meetings.map(meeting => (
-          <Link to={`/${meeting.group_id}/meetings/${meeting.id}`} key={meeting.title}>
-            <Button className="meetinglist__item">{meeting.title}</Button>
-          </Link>
+class MeetingList extends React.Component<Props, State> {
+  constructor() {
+    super();
+    this.state = {
+      showCreateMeeting: false,
+    };
+  }
+  handleNewClick = () => {
+    this.setState(prevState => ({
+      showCreateMeeting: !prevState.showCreateMeeting,
+    }));
+  }
+  handleCancel = () => {
+    this.setState({
+      showCreateMeeting: false,
+    });
+  }
+  render() {
+    const { meetings } = this.props;
+    return (
+      <Sider>
+        <div>
+          {meetings.map(meeting => (
+            <Link to={`/${meeting.group_id}/meetings/${meeting.id}`} key={meeting.title}>
+              <Button className="meetinglist__item">{meeting.title}</Button>
+            </Link>
           ))}
-      </div>
-      <div>
-        <Button type="primary" className="meetinglist__new" onClick={handleNewClick}>New</Button>
-      </div>
-    </div>
-  </Sider>
-);
+        </div>
+          <div>
+            <Button type="primary" className="meetinglist__new" onClick={this.handleNewClick}>New</Button>
+              <Modal
+                title="Create a new meeting"
+                visible={this.state.showCreateMeeting}
+                onCancel={this.handleCancel}
+              >
+              </Modal>
+          </div>
+      </Sider>
+    );
+  }
+}
 
 export default MeetingList;
