@@ -1,21 +1,28 @@
 import * as React from 'react';
+import { Form, Input, DatePicker, TimePicker } from 'antd';
+
+const FormItem = Form.Item;
+const { TextArea } = Input;
 
 const CreateMeeting = () => {
   return (
-    <div>
-      <form action="">
-        <label htmlFor="title">Title</label>
-        <input type="text" id="title" />
-        <label htmlFor="date">Date</label>
-        <input type="text" id="date" />
-        <label htmlFor="location">Location</label>
-        <input type="text" id="location" />
-        <label htmlFor="details">Details</label>
-        <input type="text" id="details" />
-
-        <button type="submit">Save</button>
-      </form>
-    </div>
+    <Form action="">
+      <FormItem label="Title">
+        <Input placeholder="" />
+      </FormItem>
+      <FormItem label="Date">
+        <DatePicker />
+      </FormItem>
+      <FormItem label="Time">
+        <TimePicker />
+      </FormItem>
+      <FormItem label="Location">
+        <Input placeholder="" />
+      </FormItem>
+      <FormItem label="Detail">
+        <TextArea placeholder="" />
+      </FormItem>
+    </Form>
   );
 };
 

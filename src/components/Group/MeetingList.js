@@ -2,6 +2,7 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { Layout, Modal, Button } from 'antd';
+import CreateMeeting from './CreateMeeting';
 
 const { Sider } = Layout;
 
@@ -32,6 +33,11 @@ class MeetingList extends React.Component<Props, State> {
       showCreateMeeting: !prevState.showCreateMeeting,
     }));
   }
+  handleOk = () => {
+    this.setState({
+      showCreateMeeting: false,
+    });
+  }
   handleCancel = () => {
     this.setState({
       showCreateMeeting: false,
@@ -54,7 +60,9 @@ class MeetingList extends React.Component<Props, State> {
                 title="Create a new meeting"
                 visible={this.state.showCreateMeeting}
                 onCancel={this.handleCancel}
+                onOk={this.handleOk}
               >
+                <CreateMeeting />
               </Modal>
           </div>
       </Sider>

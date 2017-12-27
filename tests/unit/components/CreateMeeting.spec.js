@@ -17,10 +17,4 @@ describe('Create a meeting', () => {
   it('Should have four inputs', () => {
     expect(component.find('input').length).to.equal(4);
   });
-
-  describe('Save button', () => {
-    it('Should exist', () => {
-      expect(component.find('button').length).to.equal(1);
-    });
-  });
 });
