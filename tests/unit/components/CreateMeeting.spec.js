@@ -13,8 +13,4 @@ describe('Create a meeting', () => {
   it('Should render successfully', () => {
     expect(component.exists()).to.equal(true);
   });
-
-  it('Should have four inputs', () => {
-    expect(component.find('input').length).to.equal(4);
-  });
 });

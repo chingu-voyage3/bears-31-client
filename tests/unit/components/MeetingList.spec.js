@@ -1,16 +1,17 @@
-/* global describe, it, beforeEach */
+/* global describe, it, beforeEach, window */
 import React from 'react';
 import { expect } from 'chai';
 import { shallow } from 'enzyme';
 import { spy } from 'sinon';
-
+import { MemoryRouter as Router } from 'react-router-dom';
 import MeetingList from '../../../src/components/Group/MeetingList';
+
+window.matchMedia = window.matchMedia;
 
 describe('Meeting List', () => {
   let component;
   const handleNewClickSpy = spy();
   const props = {
-    handleNewClick: handleNewClickSpy,
     meetings: [
       {
         title: 'First meeting',
@@ -38,6 +39,11 @@ describe('Meeting List', () => {
   describe('New button', () => {
     it('Should have a "new" button to create a meeting', () => {
       expect(component.find('.meetinglist__new').length).to.equal(1);
+    });
+
+    it('Should call handleNewClick function when clicked', () => {
+      component = shallow(<Router><MeetingList {...props} /></Router>);
+
     });
   });
 });
