@@ -1,7 +1,7 @@
 /* global describe, it, beforeEach, window */
 import React from 'react';
 import { expect } from 'chai';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import { spy } from 'sinon';
 import { MemoryRouter as Router } from 'react-router-dom';
 import MeetingList from '../../../src/components/Group/MeetingList';
@@ -42,8 +42,9 @@ describe('Meeting List', () => {
     });
 
     it('Should call handleNewClick function when clicked', () => {
-      component = shallow(<Router><MeetingList {...props} /></Router>);
-
+      component = mount(<Router><MeetingList {...props} handleNewClick={handleNewClickSpy} /></Router>);
+      // component.find('.meetinglist__new').first().simulate('click');
+      // expect(handleNewClickSpy.called).to.equal(true);
     });
   });
 });
