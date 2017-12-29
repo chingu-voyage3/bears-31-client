@@ -33,15 +33,26 @@ class MeetingList extends React.Component<Props, State> {
       showCreateMeeting: !prevState.showCreateMeeting,
     }));
   }
-  handleOk = () => {
-    this.setState({
-      showCreateMeeting: false,
-    });
-  }
   handleCancel = () => {
     this.setState({
       showCreateMeeting: false,
     });
+  }
+  handleCreate = () => {
+    const form = this.form;
+    form.validateFields((err, values) => {
+      if (err) {
+        return;
+      }
+      console.log(values);
+      this.setState({
+        showCreateMeeting: false,
+      });
+    });
+
+  }
+  saveFormRef = (form) => {
+    this.form = form;
   }
   render() {
     const { meetings } = this.props;
@@ -49,21 +60,17 @@ class MeetingList extends React.Component<Props, State> {
       <Sider>
         <div>
           {meetings.map(meeting => (
-            <Link to={`/${meeting.group_id}/meetings/${meeting.id}`} key={meeting.title}>
-              <Button className="meetinglist__item">{meeting.title}</Button>
-            </Link>
+            <Button className="meetinglist__item">{meeting.title}</Button>
           ))}
         </div>
           <div>
             <Button type="primary" className="meetinglist__new" onClick={this.handleNewClick}>New</Button>
-              <Modal
-                title="Create a new meeting"
-                visible={this.state.showCreateMeeting}
+              <CreateMeeting
+                ref={this.saveFormRef}
+                showCreateMeeting={this.state.showCreateMeeting}
                 onCancel={this.handleCancel}
-                onOk={this.handleOk}
-              >
-                <CreateMeeting />
-              </Modal>
+                onCreate={this.handleCreate}
+              />
           </div>
       </Sider>
     );
@@ -71,3 +78,7 @@ class MeetingList extends React.Component<Props, State> {
 }
 
 export default MeetingList;
+
+// <Link to={`/${meeting.group_id}/meetings/${meeting.id}`} key={meeting.title}>
+// <Button className="meetinglist__item">{meeting.title}</Button>
+// </Link>

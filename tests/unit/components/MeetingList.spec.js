@@ -41,10 +41,12 @@ describe('Meeting List', () => {
       expect(component.find('.meetinglist__new').length).to.equal(1);
     });
 
-    it('Should call handleNewClick function when clicked', () => {
-      component = mount(<Router><MeetingList {...props} handleNewClick={handleNewClickSpy} /></Router>);
-      // component.find('.meetinglist__new').first().simulate('click');
-      // expect(handleNewClickSpy.called).to.equal(true);
+    it('Should change showCreateMeeting flag when clicked', () => {
+      component = mount(<Router><MeetingList {...props} /></Router>);
+      component.find('.meetinglist__new').first().simulate('click');
+      expect(component.find('MeetingList').instance().state.showCreateMeeting, 'first click').to.equal(true);
+      component.find('.meetinglist__new').first().simulate('click');
+      expect(component.find('MeetingList').instance().state.showCreateMeeting, 'second click').to.equal(false);
     });
   });
 });
