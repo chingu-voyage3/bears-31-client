@@ -1,13 +1,14 @@
 // @flow
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import { Layout, Modal, Button } from 'antd';
+import { Layout, Button } from 'antd';
 import CreateMeeting from './CreateMeeting';
 
 const { Sider } = Layout;
 
 type State = {
   showCreateMeeting: boolean,
+  redirect: boolean,
 };
 
 type Props = {
@@ -26,6 +27,7 @@ class MeetingList extends React.Component<Props, State> {
     super();
     this.state = {
       showCreateMeeting: false,
+      redirect: false,
     };
   }
   handleNewClick = () => {
@@ -45,6 +47,7 @@ class MeetingList extends React.Component<Props, State> {
         return;
       }
       console.log(values);
+      form.resetFields();
       this.setState({
         showCreateMeeting: false,
       });
@@ -60,7 +63,9 @@ class MeetingList extends React.Component<Props, State> {
       <Sider>
         <div>
           {meetings.map(meeting => (
-            <Button className="meetinglist__item">{meeting.title}</Button>
+            <Link to={`/${meeting.group_id}/meetings/${meeting.id}`} key={meeting.title}>
+              <Button className="meetinglist__item">{meeting.title}</Button>
+            </Link>
           ))}
         </div>
           <div>
@@ -79,6 +84,3 @@ class MeetingList extends React.Component<Props, State> {
 
 export default MeetingList;
 
-// <Link to={`/${meeting.group_id}/meetings/${meeting.id}`} key={meeting.title}>
-// <Button className="meetinglist__item">{meeting.title}</Button>
-// </Link>
