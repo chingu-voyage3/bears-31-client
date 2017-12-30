@@ -1,7 +1,11 @@
+/* global window */
+
 import { combineReducers, createStore, compose } from 'redux';
+import meetings from './reducers/meetings';
 
 const reducers = combineReducers({
   /* Add reducers here */
+  meetings,
 });
 
 // Redux Dev Tools extension
