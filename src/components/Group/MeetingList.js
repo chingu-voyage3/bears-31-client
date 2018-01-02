@@ -1,6 +1,5 @@
 // @flow
 import * as React from 'react';
-import { Link } from 'react-router-dom';
 import { Layout, Button } from 'antd';
 import CreateMeeting from './CreateMeeting';
 
@@ -8,10 +7,11 @@ const { Sider } = Layout;
 
 type State = {
   showCreateMeeting: boolean,
-  redirect: boolean,
 };
 
 type Props = {
+  createMeeting: Function,
+  history: Object,
   meetings: [{
     id: number,
     group_id: number,
@@ -27,7 +27,6 @@ class MeetingList extends React.Component<Props, State> {
     super();
     this.state = {
       showCreateMeeting: false,
-      redirect: false,
     };
   }
   handleNewClick = () => {
@@ -48,15 +47,18 @@ class MeetingList extends React.Component<Props, State> {
         return;
       }
       console.log(values);
+      this.props.createMeeting(values);
       form.resetFields();
       this.setState({
         showCreateMeeting: false,
       });
     });
-
   }
   saveFormRef = (form) => {
     this.form = form;
+  }
+  handleMeetingButtonClick = (groupId: number, id: number) => {
+    this.props.history.push(`/${groupId}/meetings/${id}`);
   }
   render() {
     const { meetings } = this.props;
@@ -64,9 +66,7 @@ class MeetingList extends React.Component<Props, State> {
       <Sider>
         <div>
           {meetings.map(meeting => (
-            <Link to={`/${meeting.group_id}/meetings/${meeting.id}`} key={meeting.title}>
-              <Button className="meetinglist__item">{meeting.title}</Button>
-            </Link>
+            <Button key={meeting.title} className="meetinglist__item" onClick={() => this.handleMeetingButtonClick(meeting.group_id, meeting.id)}>{meeting.title}</Button>
           ))}
         </div>
           <div>
@@ -85,3 +85,6 @@ class MeetingList extends React.Component<Props, State> {
 
 export default MeetingList;
 
+// <Link to={`/${meeting.group_id}/meetings/${meeting.id}`} key={meeting.title}>
+// <Button className="meetinglist__item">{meeting.title}</Button>
+// </Link>

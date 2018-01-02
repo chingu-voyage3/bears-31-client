@@ -18,15 +18,19 @@ type Props = {
     location: string,
     detail: string,
   }],
+  createMeeting: Function,
+  history: Object,
 };
 
 const Group = (props: Props) => {
-  const { meetings } = props;
+  const { meetings, createMeeting, history } = props;
   return (
     <Content style={{ padding: '0 20%' }}>
       <Layout style={{ marginBottom: '50px' }}>
         <MeetingList
           meetings={meetings}
+          createMeeting={createMeeting}
+          history={history}
         />
         <MeetingDetail {...props} />
       </Layout>
@@ -42,4 +46,4 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-export default withRouter(connect(mapStateToProps)(Group));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Group));
