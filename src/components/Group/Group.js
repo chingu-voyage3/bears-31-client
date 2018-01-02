@@ -5,6 +5,7 @@ import { withRouter } from 'react-router-dom';
 import { Layout } from 'antd';
 import MeetingList from './MeetingList';
 import MeetingDetail from './MeetingDetail';
+import { createMeeting } from '../../actions/actionCreators';
 
 const { Content } = Layout;
 
@@ -33,6 +34,12 @@ const Group = (props: Props) => {
   );
 };
 
-const mapStateToProps = state => ({ meetings: state.meetings });
+const mapStateToProps = state => ({ meetings: state.createMeeting });
+
+const mapDispatchToProps = dispatch => ({
+  createMeeting: (meeting) => {
+    dispatch(createMeeting(meeting));
+  },
+});
 
 export default withRouter(connect(mapStateToProps)(Group));

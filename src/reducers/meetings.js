@@ -1,9 +1,14 @@
 import meetingsData from '../fakeData/meetingsData';
 
-export default (state = meetingsData, action) => {
+console.log(meetingsData);
+
+export function createMeeting(state = meetingsData, action) {
   switch (action.type) {
     case 'CREATE_MEETING':
-      return [];
+      return {
+        ...state,
+        ...action,
+      };
     default:
       return state;
   }
