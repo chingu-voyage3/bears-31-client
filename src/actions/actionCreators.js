@@ -1,8 +1,8 @@
 export const createMeeting = ({
   id,
   group_id,
-  title,
-  location,
+  title = '',
+  location = '',
   details = '',
   due,
 }) => ({

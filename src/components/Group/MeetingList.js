@@ -46,8 +46,19 @@ class MeetingList extends React.Component<Props, State> {
       if (err) {
         return;
       }
-      console.log(values);
-      this.props.createMeeting(values);
+      const { detail, location, title } = values;
+      
+      const due = values['date-time-picker'].format('x');
+      
+      const newMeeting = {
+        id: 3,
+        group_id: 1,
+        title,
+        location,
+        detail,
+        due,
+      };
+      this.props.createMeeting(newMeeting);
       form.resetFields();
       this.setState({
         showCreateMeeting: false,
@@ -62,6 +73,7 @@ class MeetingList extends React.Component<Props, State> {
   }
   render() {
     const { meetings } = this.props;
+    console.log(meetings);
     return (
       <Sider>
         <div>
@@ -84,7 +96,3 @@ class MeetingList extends React.Component<Props, State> {
 }
 
 export default MeetingList;
-
-// <Link to={`/${meeting.group_id}/meetings/${meeting.id}`} key={meeting.title}>
-// <Button className="meetinglist__item">{meeting.title}</Button>
-// </Link>

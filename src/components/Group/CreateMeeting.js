@@ -27,10 +27,7 @@ const CreateMeeting = Form.create()((props) => {
           })(<Input placeholder="" />)}
         </FormItem>
         <FormItem label="Date">
-          {getFieldDecorator('date-picker', config)(<DatePicker />)}
-        </FormItem>
-        <FormItem label="Time">
-          {getFieldDecorator('date-time-picker', config)(<TimePicker />)}
+          {getFieldDecorator('date-time-picker', config)(<DatePicker showTime format="YYYY-MM-DD HH:mm" />)}
         </FormItem>
         <FormItem label="Location">
           {getFieldDecorator('location', {

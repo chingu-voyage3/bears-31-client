@@ -6,7 +6,7 @@ import './App.css';
 export const App = props => (
   <div className="App">
     <Header />
-    <Group {...props} />
+    <Group />
   </div>
 );
 
