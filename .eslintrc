@@ -1,12 +1,11 @@
 {
   "parser": "babel-eslint",
   "plugins": [
-    "flowtype",
-    "transform-object-rest-spread"
+    "flowtype"
   ],
   "extends": "airbnb",
   "rules": {
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
   },
   "globals": {
     "document": true

@@ -4,27 +4,22 @@ import { Modal, Form, Input, DatePicker, TimePicker } from 'antd';
 const FormItem = Form.Item;
 const { TextArea } = Input;
 
-const CreateMeeting = Form.create()((props) => {
-  const {
-    showCreateMeeting, onCancel, onCreate, form,
-  } = props;
-  const { getFieldDecorator } = form;
+const EditMeeting = Form.create()((props) => {
+  const { getFieldDecorator } = props.form;
   const config = {
     rules: [{ type: 'object', required: true, message: 'Please select time' }],
   };
   return (
     <Modal
-      title="Create a new meeting"
-      visible={showCreateMeeting}
-      okText="Create"
-      onCancel={onCancel}
-      onOk={onCreate}
+      title="Meeting Detail"
+      visible={props.showEditMeeting}
+      okText="Save"
     >
       <Form>
         <FormItem label="Title">
           {getFieldDecorator('title', {
             rules: [{ required: true, message: 'Please input the title of your meeting' }],
-          })(<Input placeholder="" />)}
+          })(<Input defaultValue="title" />)}
         </FormItem>
         <FormItem label="Date">
           {getFieldDecorator('date-time-picker', config)(<DatePicker showTime={{ format: 'HH:mm' }} />)}
@@ -42,4 +37,4 @@ const CreateMeeting = Form.create()((props) => {
   );
 });
 
-export default CreateMeeting;
+export default EditMeeting;

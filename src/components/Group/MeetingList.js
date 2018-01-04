@@ -41,7 +41,6 @@ class MeetingList extends React.Component<Props, State> {
     });
   }
   handleCreate = () => {
-    console.log(this.props);
     const form = this.form;
     form.validateFields((err, values) => {
       if (err) {
