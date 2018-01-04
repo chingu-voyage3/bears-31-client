@@ -1,33 +1,60 @@
 import React, { Component } from 'react';
 import { Form, Icon, Input, Button } from 'antd';
+import api from '../../api';
 
 const FormItem = Form.Item;
 
 class LoginForm extends Component {
+  constructor() {
+    super();
+    this.state = {
+      error: null,
+    };
+  }
+
   handleLogin = (e) => {
     e.preventDefault();
 
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        let { email, password } = values;
-        // Now with you can use the email and password to post
+        let { username, password } = values;
+        // Now with you can use the username and password to post
         // to the login API endpoint
-        console.log(`Email: ${email} Password: ${password}`);
+        api.post('/users/login', {
+          username,
+          password,
+        })
+          .then(({ data }) => {
+            if (data.error) {
+              this.setState({
+                error: data.error,
+              });
+
+              console.log(`${data.error}`);
+            } else {
+              window.localStorage.setItem('token', data.token);
+              window.location.assign('/');
+            }
+          })
+          .catch((resErr) => {
+            console.error(resErr);
+          });
       }
     });
   }
 
   render() {
     const { getFieldDecorator } = this.props.form;
+    let { error } = this.state;
     return (
       <Form onSubmit={this.handleLogin}>
         <FormItem>
-          {getFieldDecorator('email', {
-            rules: [{ required: true, message: 'Please input your email!' }],
+          {getFieldDecorator('username', {
+            rules: [{ required: true, message: 'Please input your username!' }],
           })(<Input
             prefix={<Icon type="user" style={{ fontSize: 13 }} />}
-            type="email"
-            placeholder="Email" />
+            type="text"
+            placeholder="Username" />
           )}
         </FormItem>
         <FormItem>
@@ -41,6 +68,9 @@ class LoginForm extends Component {
             />
           )}
         </FormItem>
+
+        {error}
+
         <FormItem>
           <Button
             type="primary"
