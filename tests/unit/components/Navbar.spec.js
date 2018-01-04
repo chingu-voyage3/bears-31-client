@@ -2,12 +2,12 @@
 import React from 'react';
 import { expect } from 'chai';
 import { shallow } from 'enzyme';
-import Header from '../../../src/components/Header/Header';
+import Navbar from '../../../src/components/Navbar/Navbar';
 
-describe('Header', () => {
+describe('Navbar', () => {
   let component;
   beforeEach(() => {
-    component = shallow(<Header />);
+    component = shallow(<Navbar />);
   });
 
   it('Should render successfully', () => {
