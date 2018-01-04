@@ -1,11 +1,12 @@
 import React from 'react';
-import Header from '../src/components/Header/Header';
 import Group from '../src/components/Group/Group';
+import Navbar from './components/Navbar/Navbar';
+
 import './App.css';
 
 export const App = props => (
   <div className="App">
-    <Header />
+    <Navbar />
     <Group {...props} />
   </div>
 );
