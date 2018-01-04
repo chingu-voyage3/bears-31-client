@@ -20,10 +20,11 @@ type Props = {
   }],
   createMeeting: Function,
   history: Object,
+  match: Object,
 };
 
 const Group = (props: Props) => {
-  const { meetings, createMeeting, history } = props;
+  const { meetings, createMeeting, history, match } = props;
   return (
     <Content style={{ padding: '0 20%' }}>
       <Layout style={{ marginBottom: '50px' }}>
@@ -31,6 +32,7 @@ const Group = (props: Props) => {
           meetings={meetings}
           createMeeting={createMeeting}
           history={history}
+          groupId={match.params.groupId}
         />
         <MeetingDetail {...props} />
       </Layout>

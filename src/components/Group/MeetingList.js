@@ -20,6 +20,7 @@ type Props = {
     location: string,
     detail: string,
   }],
+  groupId: number,
 }
 
 class MeetingList extends React.Component<Props, State> {
@@ -40,7 +41,7 @@ class MeetingList extends React.Component<Props, State> {
     });
   }
   handleCreate = () => {
-    
+    console.log(this.props);
     const form = this.form;
     form.validateFields((err, values) => {
       if (err) {
@@ -49,10 +50,9 @@ class MeetingList extends React.Component<Props, State> {
       const { detail, location, title } = values;
       
       const due = values['date-time-picker'].format('x');
-      
       const newMeeting = {
         id: 3,
-        group_id: 1,
+        group_id: this.props.groupId,
         title,
         location,
         detail,
@@ -73,7 +73,6 @@ class MeetingList extends React.Component<Props, State> {
   }
   render() {
     const { meetings } = this.props;
-    console.log(meetings);
     return (
       <Sider>
         <div>
