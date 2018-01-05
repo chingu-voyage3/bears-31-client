@@ -31,6 +31,11 @@ class MeetingList extends React.Component<Props, State> {
       showEditMeeting: true,
     });
   }
+  handleCancel = () => {
+    this.setState({
+      showEditMeeting: false,
+    });
+  }
   saveFormRef = (form) => {
     this.form = form;
   }
@@ -55,6 +60,8 @@ class MeetingList extends React.Component<Props, State> {
                 <EditMeeting
                   ref={this.saveFormRef}
                   showEditMeeting={this.state.showEditMeeting}
+                  onCancel={this.handleCancel}
+                  meeting={currentMeeting}
                 />
           </div>
         }

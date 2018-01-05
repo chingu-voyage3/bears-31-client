@@ -1,36 +1,54 @@
+// @flow
 import * as React from 'react';
-import { Modal, Form, Input, DatePicker, TimePicker } from 'antd';
+import { Modal, Form, Input, DatePicker } from 'antd';
 
 const FormItem = Form.Item;
 const { TextArea } = Input;
 
-const EditMeeting = Form.create()((props) => {
-  const { getFieldDecorator } = props.form;
+type Props = {
+  showEditMeeting: bool,
+  onCancel: Function,
+  form: Object,
+  meeting: {
+    id: number,
+    group_id: number,
+    title: string,
+    due: number,
+    location: string,
+    detail: string,
+  }
+};
+
+const EditMeeting = Form.create()(({
+  form, showEditMeeting, onCancel, meeting,
+}: Props) => {
+  const { getFieldDecorator } = form;
   const config = {
     rules: [{ type: 'object', required: true, message: 'Please select time' }],
   };
   return (
     <Modal
       title="Meeting Detail"
-      visible={props.showEditMeeting}
+      visible={showEditMeeting}
       okText="Save"
+      onCancel={onCancel}
     >
       <Form>
         <FormItem label="Title">
-          {getFieldDecorator('title', {
+          {getFieldDecorator('title', { initialValue: meeting.title }, {
             rules: [{ required: true, message: 'Please input the title of your meeting' }],
-          })(<Input defaultValue="title" />)}
+          })(<Input />)}
         </FormItem>
         <FormItem label="Date">
-          {getFieldDecorator('date-time-picker', config)(<DatePicker showTime={{ format: 'HH:mm' }} />)}
+          {getFieldDecorator('date-time-picker', config, { initialValue: meeting.due })(<DatePicker showTime={{ format: 'HH:mm' }} />)}
         </FormItem>
         <FormItem label="Location">
-          {getFieldDecorator('location', {
-            rules: [{ required: true, message: 'Please input the location of your meeting'}],
+          {getFieldDecorator('location', { initialValue: meeting.location }, {
+            rules: [{ required: true, message: 'Please input the location of your meeting' }],
           })(<Input placeholder="" />)}
         </FormItem>
         <FormItem label="Detail">
-          {getFieldDecorator('detail')(<TextArea placeholder="" />)}
+          {getFieldDecorator('detail', { initialValue: meeting.detail })(<TextArea placeholder="" />)}
         </FormItem>
       </Form>
     </Modal>

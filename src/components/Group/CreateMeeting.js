@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Modal, Form, Input, DatePicker, TimePicker } from 'antd';
+import { Modal, Form, Input, DatePicker } from 'antd';
 
 const FormItem = Form.Item;
 const { TextArea } = Input;

@@ -1,6 +1,6 @@
 /* global window */
 
-import { combineReducers, createStore, compose } from 'redux';
+import { createStore, compose } from 'redux';
 import rootReducer from './reducers';
 
 // Redux Dev Tools extension
