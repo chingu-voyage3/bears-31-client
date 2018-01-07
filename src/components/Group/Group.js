@@ -3,6 +3,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Layout } from 'antd';
+import GroupHeader from './GroupHeader';
 import MeetingList from './MeetingList';
 import MeetingDetail from './MeetingDetail';
 import { createMeeting } from '../../actions/actionCreators';
@@ -27,6 +28,7 @@ const Group = (props: Props) => {
   const { meetings, createMeeting, history, match } = props;
   return (
     <Content>
+      <GroupHeader />
       <Layout style={{ marginBottom: '50px' }}>
         <MeetingList
           meetings={meetings}
