@@ -2,6 +2,7 @@
 import * as React from 'react';
 import { Layout, Button } from 'antd';
 import CreateMeeting from './CreateMeeting';
+import './group.css';
 
 const { Sider } = Layout;
 

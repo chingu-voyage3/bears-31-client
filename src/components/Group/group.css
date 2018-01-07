@@ -1,0 +1,55 @@
+
+/* Group */
+
+.ant-layout-content {
+  padding: 0 15%;
+  height: 50rem;
+}
+
+/* Meeting list */
+
+.ant-layout-sider{
+  height: 40rem;
+  position: relative;
+  padding-top: 2rem;
+}
+
+.ant-btn.meetinglist__item {
+  border: solid 1px #333;
+  margin-bottom: 2rem;
+  width: 90%;
+  height: 5rem;
+}
+
+.ant-btn.meetinglist__new.ant-btn-primary {
+  border: solid 1px #333;
+  height: 5rem;
+  width: 90%;
+  position: absolute;
+  bottom: 2rem;
+  left: 5%;
+}
+
+/* Meeting Detail */
+
+.meeting-detail {
+  font-size: 1.6rem;
+  text-align: left;
+  margin: 0 auto;
+  padding: 2rem 0;
+  position: relative;
+}
+
+.meeting-detail__list {
+  padding: 0;
+  list-style: none;
+}
+
+.meeting-detail__list li {
+  margin-bottom: 1rem;
+}
+
+.meeting-detail__button {
+  position: absolute;
+  right: 0;
+}

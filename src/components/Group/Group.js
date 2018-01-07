@@ -26,7 +26,7 @@ type Props = {
 const Group = (props: Props) => {
   const { meetings, createMeeting, history, match } = props;
   return (
-    <Content style={{ padding: '0 20%' }}>
+    <Content>
       <Layout style={{ marginBottom: '50px' }}>
         <MeetingList
           meetings={meetings}

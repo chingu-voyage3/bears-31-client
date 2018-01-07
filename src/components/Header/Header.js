@@ -1,11 +1,12 @@
 import React from 'react';
 import { Layout, Menu } from 'antd';
+import './header.css';
 
 const { Header: HeaderContainer } = Layout;
 
 const Header = () => {
   return (
-    <Layout>
+    <Layout className="header">
       <HeaderContainer>
         <Menu theme="dark" mode="horizontal">
           <Menu.Item key="1">Andres</Menu.Item>
