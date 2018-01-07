@@ -1,3 +1,32 @@
 .header {
+  height: 6rem;
   margin-bottom: 2rem;
+  padding: 0 4rem;
+  background: #448AFF;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+.header h1 {
+  display: block;
+  margin-bottom: 0;
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  transform: translateY(-50%);
+}
+
+.header ul {
+  list-style: none;
+  display: flex;
+  padding: 0;
+  position: absolute;
+  right: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.header ul li {
+  width: 10rem;
 }
